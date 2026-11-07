@@ -1,0 +1,29 @@
+.page {
+  display: flex;
+  min-height: 60vh;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--color-muted);
+}
+
+.indicator {
+  width: 1rem;
+  height: 1rem;
+  border: 0.15rem solid var(--color-border);
+  border-top-color: var(--color-text);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator {
+    animation: none;
+  }
+}

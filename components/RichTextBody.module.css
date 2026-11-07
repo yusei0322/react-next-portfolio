@@ -1,0 +1,5 @@
+.body { overflow-wrap: anywhere; }
+.body img { max-width: 100%; height: auto; }
+.body pre { overflow-x: auto; }
+.body table { display: block; max-width: 100%; overflow-x: auto; }
+.body :is(h2, h3, h4, p, ul, ol, blockquote, pre, figure, table) { margin-block: 1em; }

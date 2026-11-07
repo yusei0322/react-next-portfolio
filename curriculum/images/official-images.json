@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-31",
+  "selection_count": 7,
+  "purpose": "第8回のmicroCMS準備と第11回のVercel環境変数設定に添える、公式資料の画面例",
+  "verification": {
+    "method": "各画像を公式ページの画像リンクから取得し、実画像を個別に目視確認した。",
+    "source_kind": "official_documentation_screenshot",
+    "live_student_account_capture": false,
+    "image_editing_performed": false,
+    "visible_unmasked_credentials_in_selected_images": false,
+    "limitation": "公式の画面例であり、学生のアカウントや今回の公開作業の完了を示す画像ではない。UI更新・権限・プランによる差があり得る。",
+    "selection_update": "Vercelの2026年8月24日のConfig / Secret変更を確認し、旧Sensitive追加フォームを新しい公式画像へ置換した。型ラベルのない旧変数一覧画像も採用から外した。"
+  },
+  "usage_notes": [
+    "画像の直下に出典ページと「公式画面例」を表示し、教材で入力する値との違いを併記する。",
+    "教科書の紙面画像ではない。教科書本文・図版は転載しない。",
+    "実際のAPIキー値を入力した自分の画面を提出用に撮る手順にはしない。",
+    "画像が小さくて文字を読めない場合は元画像を開けるようにする。"
+  ],
+  "images": [
+    {
+      "id": "microcms-create-entry",
+      "title": "microCMS：新しいAPIを作成する入口",
+      "task_ids": [
+        "T08-1",
+        "T08-4"
+      ],
+      "image_url": "https://images.microcms-assets.io/assets/d6af1616730544a596d299c20834f460/d7d24ee831424b46a5c2921ba9554b38/CleanShot%202025-07-17%20at%2010.38.02.png",
+      "source_page_url": "https://document.microcms.io/manual/create-api",
+      "source_page_title": "APIの作成・管理｜microCMSドキュメント",
+      "what_to_look_at": [
+        "左側の「コンテンツ（API）」右端にある「…」。",
+        "開いたメニュー内の「新しいAPIを作成」。公式画像では赤枠で示されている。"
+      ],
+      "course_differences": [
+        "画像内のサービス名は例。学生は自分のサービスを選ぶ。",
+        "ブログを作った後、同じサービス内で作品APIも作る。"
+      ],
+      "suggested_caption": "公式画面例：左の「コンテンツ（API）」の「…」から「新しいAPIを作成」を選びます。サービス名は自分のものに読み替えてください。",
+      "credential_review": "サービス名と操作メニューだけが表示され、APIキー・パスワード等の秘密値は見えていない。",
+      "limitations": [
+        "APIの基本情報やフィールド設定は次の画像で説明する。"
+      ]
+    },
+    {
+      "id": "microcms-api-name",
+      "title": "microCMS：API名とエンドポイント",
+      "task_ids": [
+        "T08-1",
+        "T08-4"
+      ],
+      "image_url": "https://images.microcms-assets.io/assets/d6af1616730544a596d299c20834f460/338138e97fa04a018029417883bfbb9d/CleanShot%202024-08-16%20at%2014.32.35%402x.png",
+      "source_page_url": "https://document.microcms.io/manual/create-api",
+      "source_page_title": "APIの作成・管理｜microCMSドキュメント",
+      "what_to_look_at": [
+        "「APIの基本情報」のAPI名とエンドポイントの入力欄。",
+        "エンドポイント欄が /api/v1/ の後ろに来ること。"
+      ],
+      "course_differences": [
+        "ブログ：API名は「ブログ」、エンドポイントは blogs。",
+        "作品：API名は「作品」、エンドポイントは works。",
+        "画像の news は入力例。教材では news を作らない。",
+        "画像のサービスドメインは例。URL全体をエンドポイント欄へ入力しない。"
+      ],
+      "suggested_caption": "公式画面例：入力欄の位置を確認します。教材ではAPI名を「ブログ」、エンドポイントを blogs にします。作品では「作品」と works に読み替えます。",
+      "credential_review": "空欄・プレースホルダーと公開可能な例示ドメインだけで、秘密値は見えていない。",
+      "limitations": [
+        "名前を設定しただけではAPI作成は完了しない。続けてAPIの型とフィールドを設定する。"
+      ]
+    },
+    {
+      "id": "microcms-api-type",
+      "title": "microCMS：リスト形式を選ぶ",
+      "task_ids": [
+        "T08-1",
+        "T08-4"
+      ],
+      "image_url": "https://images.microcms-assets.io/assets/d6af1616730544a596d299c20834f460/58654b8b67c142a394a1e64d15c12ded/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-03-27%2014.57.46.png",
+      "source_page_url": "https://document.microcms.io/manual/create-api",
+      "source_page_title": "APIの作成・管理｜microCMSドキュメント",
+      "what_to_look_at": [
+        "左の「リスト形式」と右の「オブジェクト形式」。",
+        "紫色の枠で選択された「リスト形式」。"
+      ],
+      "course_differences": [
+        "ブログと作品はどちらも複数の内容を登録するため、両APIとも「リスト形式」を選ぶ。"
+      ],
+      "suggested_caption": "公式画面例：ブログも作品も「リスト形式」を選びます。選択された側の枠を確認してから次へ進みます。",
+      "credential_review": "APIの型の選択だけが表示され、秘密値は見えていない。",
+      "limitations": [
+        "色だけを判断材料にせず、「リスト形式」のラベルも確認する。"
+      ]
+    },
+    {
+      "id": "microcms-api-schema",
+      "title": "microCMS：フィールドID・種類・必須の設定",
+      "task_ids": [
+        "T08-1",
+        "T08-4"
+      ],
+      "image_url": "https://images.microcms-assets.io/assets/d6af1616730544a596d299c20834f460/14e01ce40c9843ff8505f3784fd64410/CleanShot%202024-08-16%20at%2014.34.23%402x.png",
+      "source_page_url": "https://document.microcms.io/manual/create-api",
+      "source_page_title": "APIの作成・管理｜microCMSドキュメント",
+      "what_to_look_at": [
+        "各行の「フィールドID」「表示名」「種類」。",
+        "右側の「必須項目」のスイッチと、下側のフィールド追加・作成ボタン。"
+      ],
+      "course_differences": [
+        "画像は title と body の2項目だが、教材は title / description / content / thumbnail の4項目。",
+        "title はテキストフィールド、必須をON。画像の必須スイッチOFFをそのまま真似しない。",
+        "description はテキストエリア、content はリッチエディタ、thumbnail は画像。この3つは任意。",
+        "画像の body に対応する教材のフィールドIDは content。",
+        "id、slug、作成・更新・公開日時のフィールドは追加しない。"
+      ],
+      "suggested_caption": "公式画面例：項目を追加する位置を確認します。教材のフィールドIDは title・description・content・thumbnail の4つで、必須をONにするのは title だけです。画像の body は使いません。",
+      "credential_review": "フィールド設定だけが表示されている。表示された識別子はフィールドの設定情報で、APIキー・パスワード等の秘密値ではない。",
+      "limitations": [
+        "画像自体は教材の完成スキーマではない。直前または直後に教材の4フィールド表を必ず併記する。"
+      ]
+    },
+    {
+      "id": "microcms-key-permissions",
+      "title": "microCMS：公開サイト用APIキーのGET権限",
+      "task_ids": [
+        "T08-5",
+        "T10-3"
+      ],
+      "image_url": "https://images.microcms-assets.io/assets/d6af1616730544a596d299c20834f460/5365948939244a89842f176172e2e38d/CleanShot%202024-06-10%20at%2011%E2%80%AF.32.34.png",
+      "source_page_url": "https://document.microcms.io/content-api/x-microcms-api-key",
+      "source_page_title": "APIキー（APIの認証と権限管理）｜microCMSドキュメント",
+      "what_to_look_at": [
+        "「コンテンツAPI」タブの権限表。",
+        "GETが選択されていることと、下書き・公開終了の取得を許可する欄。"
+      ],
+      "course_differences": [
+        "教材の公開用キーはGETのみ。POST / PUT / PATCH / DELETEは付けない。",
+        "下書き全取得・公開終了全取得は標準課題で有効にしない。",
+        "既存キーの設定を変更する場合は、画像の「APIキーを作成する」と画面タイトルや保存ボタン名が異なる場合がある。"
+      ],
+      "suggested_caption": "公式画面例：コンテンツAPIのGET権限を確認します。教材では書き込み権限と下書き・公開終了の全取得を付けません。権限表を横にスクロールし、右側の項目も確認してください。",
+      "credential_review": "キーの名前は未入力で、APIキーの実値は画面に表示されていない。",
+      "limitations": [
+        "画像の権限表は横方向に一部が隠れているため、全書き込み権限がOFFであることをこの1枚だけで判断しない。",
+        "画面上の権限確認に使い、キーの実値を見せる提出例にはしない。"
+      ]
+    },
+    {
+      "id": "microcms-preview-panel",
+      "title": "microCMS：APIプレビューで一覧取得する操作",
+      "task_ids": [
+        "T08-3",
+        "T08-4"
+      ],
+      "image_url": "https://images.microcms-assets.io/assets/d6af1616730544a596d299c20834f460/a459f9f84482456e87f07777e0cc0584/CleanShot%202024-09-05%20at%2016.52.49%402x.png",
+      "source_page_url": "https://document.microcms.io/manual/api-preview",
+      "source_page_title": "APIプレビュー｜microCMSドキュメント",
+      "what_to_look_at": [
+        "上部のGET、取得先URLの末尾、オレンジ色の「取得」ボタン。",
+        "HeadersとParamsの位置。標準の一覧取得では記事IDを末尾へ追加しない。"
+      ],
+      "course_differences": [
+        "サービスドメインは自分のもの。ブログの末尾は /blogs、作品の末尾は /works。",
+        "取得後はレスポンスで contents の件数・id・title・thumbnail を確認する。",
+        "右側のJavaScript例をそのまま教材ファイルへ貼り付けず、サイトへの接続はT09の手順で行う。"
+      ],
+      "suggested_caption": "公式画面例：GETと取得先の blogs を確認して「取得」を押します。作品は works に読み替えます。返ってきた contents で自分の記事を確認してください。",
+      "credential_review": "X-MICROCMS-API-KEYの値は公式画像の時点でモザイク処理され、判読できる秘密値はない。こちらで加工していない。",
+      "limitations": [
+        "取得前の操作画面であり、教材のブログ2件・作品1件の接続成功を示す画像ではない。",
+        "実画面ではHeadersにキーが表示される場合があるため、キーが見える画面を提出しない。"
+      ]
+    },
+    {
+      "id": "vercel-env-add",
+      "title": "Vercel：Config / Secretと環境変数の設定",
+      "task_ids": [
+        "T11-3"
+      ],
+      "image_url": "https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5LUS92qt7R7adaG9JpVidO/463001065b366cd88da7b1022808d697/web-light-nopadding.png",
+      "source_page_url": "https://vercel.com/changelog/environment-variables-now-use-config-and-secret-types",
+      "source_page_title": "Environment variables now use Config and Secret types｜Vercel（2026-08-24）",
+      "what_to_look_at": [
+        "Add Environment VariableのType欄にあるSecretとConfig。画像ではSecretが選択されている。",
+        "KeyとValue、下側のEnvironments（画像ではProduction）、Save。"
+      ],
+      "course_differences": [
+        "MICROCMS_API_KEYはTypeをSecretにする。教材のGET専用APIキーをValueに入力する。",
+        "MICROCMS_SERVICE_DOMAINとNEXT_PUBLIC_SITE_URLはTypeをConfigにする。",
+        "画像のCLIENT_KEY…はKey欄のプレースホルダー。教材の3つの正確な変数名に置き換える。",
+        "最低限Productionに設定し、Previewも使う場合はその環境にも必要な値を設定する。",
+        "APIキーの変数名はMICROCMS_API_KEYのままにし、NEXT_PUBLIC_を付けない。",
+        "公開URL確定後のNEXT_PUBLIC_SITE_URLは、自分の実際の公開URLにする。保存後は再デプロイする。",
+        "画像は1つの環境変数を追加するフォーム。3つの変数それぞれについてType・Key・Value・適用環境を確認する。"
+      ],
+      "suggested_caption": "公式画面例（2026年8月更新）：MICROCMS_API_KEYはSecret、MICROCMS_SERVICE_DOMAINとNEXT_PUBLIC_SITE_URLはConfigを選びます。Key・Value・Productionを確認して保存してください。画像のCLIENT_KEY…は入力例です。公開後に値を変更した場合は再デプロイします。",
+      "credential_review": "KeyのCLIENT_KEY…、ValueのEnter a value、Noteの案内文はプレースホルダー。実際のAPIキー・パスワード等の秘密値は入力されていない。",
+      "limitations": [
+        "初回Importの周囲の画面やデプロイ成功を示す画像ではない。",
+        "旧Sensitiveトグルの画像は採用から外した。現行画面はTypeでConfig / Secretを選ぶ。",
+        "Secretは保存後に現在の値を表示できない。変更するときは新しい値を入力する。",
+        "この画像に既存変数の一覧や編集メニューは写っていない。既存のNEXT_PUBLIC_SITE_URLは一覧の「…」からEditを開き、保存後に再デプロイする。"
+      ],
+      "additional_source_urls": [
+        "https://vercel.com/docs/environment-variables/sensitive-environment-variables",
+        "https://vercel.com/docs/environment-variables/managing-environment-variables"
+      ]
+    }
+  ]
+}

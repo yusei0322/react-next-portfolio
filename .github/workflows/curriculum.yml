@@ -1,0 +1,42 @@
+name: Curriculum walkthrough
+on:
+  pull_request:
+  push:
+    branches: ['curriculum/**']
+permissions:
+  contents: read
+jobs:
+  walkthrough:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        stage: [starter, blog-list, both-lists, blog-detail, complete]
+    env:
+      CURRICULUM_CHECK: '1'
+      MICROCMS_SERVICE_DOMAIN: curriculum-ci
+      MICROCMS_API_KEY: ci-placeholder-not-a-real-key
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-audit --no-fund
+      - run: node scripts/test-curriculum.mjs
+      - run: node scripts/materialize-lesson.mjs ${{ matrix.stage }}
+      - name: Lint, typecheck and build each documented stage
+        run: NODE_OPTIONS="--require=$GITHUB_WORKSPACE/scripts/mock-cms.cjs" npm run check
+      - name: Check complete site routes with mock CMS
+        if: matrix.stage == 'complete'
+        run: |
+          NODE_OPTIONS="--require=$GITHUB_WORKSPACE/scripts/mock-cms.cjs" npm run start > /tmp/lesson-server.log 2>&1 &
+          trap 'kill $! 2>/dev/null || true' EXIT
+          for i in $(seq 1 30); do curl -fsS http://localhost:3000/ >/dev/null && break || sleep 2; done
+          curl -fsS http://localhost:3000/blog/cms-test > /tmp/blog.html
+          curl -fsS http://localhost:3000/works/cms-test > /tmp/work.html
+          grep -q '教材検証ブログ' /tmp/blog.html
+          grep -q '教材検証作品' /tmp/work.html
+          grep -q '<strong>強調</strong>' /tmp/blog.html
+          curl -sS http://localhost:3000/blog/missing > /tmp/missing.html
+          grep -q 'noindex' /tmp/missing.html

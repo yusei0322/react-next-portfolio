@@ -1,0 +1,43 @@
+import "server-only";
+import type { MicroCMSImage, MicroCMSListContent } from "microcms-js-sdk";
+import { getMicroCMSClient } from "@/lib/microcms";
+import { sampleWorks } from "@/data/sample-works";
+import type { Work } from "@/types/work";
+
+type CMSWork = {
+  title: string;
+  description?: string;
+  content?: string;
+  thumbnail?: MicroCMSImage;
+} & MicroCMSListContent;
+
+function toWork(item: CMSWork): Work {
+  const image = item.thumbnail;
+  const thumbnail = image && image.width && image.height
+    ? { url: image.url, width: image.width, height: image.height }
+    : undefined;
+  return {
+    id: item.id,
+    slug: item.id,
+    title: item.title,
+    description: item.description ?? "",
+    content: item.content ?? "",
+    thumbnail,
+  };
+}
+
+// 標準課題は最大100件。100件を超える場合はページネーション課題へ進みます。
+export async function getWorks(): Promise<Work[]> {
+  const client = getMicroCMSClient();
+  const response = await client.getList<CMSWork>({
+    endpoint: "works",
+    queries: { limit: 100, orders: "-publishedAt" },
+    customRequestInit: { cache: "no-store" },
+  });
+  return response.contents.map(toWork);
+}
+
+// この段階の詳細はサンプルだけです。CMS記事の詳細はT10で接続します。
+export async function getWorkBySlug(slug: string): Promise<Work | undefined> {
+  return sampleWorks.find((item) => item.slug === slug);
+}
