@@ -1,6 +1,6 @@
 export const profile = {
-  name: "あなたの名前",
-  role: "Webエンジニアを目指す学生",
+  name: "芳賀勇成",
+  role: "AIエンジニアを目指す学生",
   introduction:
     "HTML、CSS、JavaScript、Reactを学びながら、使う人に伝わるWebサイトを制作しています。",
   location: "京都",
@@ -13,7 +13,7 @@ export const profile = {
   links: [
     {
       label: "GitHub",
-      href: "https://github.com/",
+      href: "https://github.com/yusei0322",
     },
   ],
 } as const;
